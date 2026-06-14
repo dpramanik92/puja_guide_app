@@ -1,0 +1,27 @@
+{
+  "id": "singhi_park",
+  "name_en": "Singhi Park Sarbojonin Durga Puja",
+  "name_bn": "সিঙ্গি পার্ক সর্বজনীন দুর্গা পুজো",
+  "location_en": "Dover Lane, Kolkata",
+  "location_bn": "ডোভার লেন, কলকাতা",
+  "address": "5 Ramani Chatterjee, Dover Ln, Kolkata, West Bengal 700029",
+  "coordinates": [
+    22.5163,
+    88.3639
+  ],
+  "nearest_metro": "Kalighat, Blue Line",
+  "how_to_reach_en": "Take the metro to Kalighat station and then a short taxi or auto ride to Dover Lane.",
+  "how_to_reach_bn": "কালিঘাট মেট্রো স্টেশনে নামুন এবং তারপর ডোভার লেনে ট্যাক্সি বা অটোতে যান।",
+  "crowd_level": "high",
+  "best_visiting_time": "evening 6-9 PM",
+  "specialty_en": "Classic South Kolkata puja with regal idols and vibrant lighting.",
+  "specialty_bn": "দক্ষিণ কলকাতার ক্লাসিক পুজো, রাজকীয় প্রতিমা এবং উজ্জ্বল আলোকসজ্জা সহ।",
+  "theme_2024": "",
+  "established_year": 1948,
+  "timings": "24 hours during puja days",
+  "tags": [
+    "traditional",
+    "regal",
+    "vibrant lighting"
+  ]
+}

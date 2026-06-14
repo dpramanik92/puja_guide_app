@@ -1,0 +1,27 @@
+{
+  "id": "tala_park_prattoy",
+  "name_en": "Tala Park Prattoy",
+  "name_bn": "তালা পার্ক প্রত্যয়",
+  "location_en": "Tala, Kolkata",
+  "location_bn": "তালা, কলকাতা",
+  "address": "8/1 Rajkumar Chatterjee Road, Tala, Kolkata - 700037",
+  "coordinates": [
+    22.6065,
+    88.3773
+  ],
+  "nearest_metro": "Belgachia, Line 1",
+  "how_to_reach_en": "Take the metro to Belgachia station and then a short walk or rickshaw ride to 8/1 Rajkumar Chatterjee Road.",
+  "how_to_reach_bn": "বেলগাছিয়া মেট্রো স্টেশন থেকে মেট্রো নিয়ে ৮/১ রাজকুমার চ্যাটার্জি রোডে হাঁটা বা রিকশা নিন।",
+  "crowd_level": "high",
+  "best_visiting_time": "early morning 4-7 AM",
+  "specialty_en": "Celebrating its centenary with unique decorations and cultural programs.",
+  "specialty_bn": "অনন্য সজ্জা এবং সাংস্কৃতিক প্রোগ্রামের সাথে শতবর্ষ উদযাপন।",
+  "theme_2024": "",
+  "established_year": 1923,
+  "timings": "24 hours during puja",
+  "tags": [
+    "centenary",
+    "cultural programs",
+    "decorations"
+  ]
+}

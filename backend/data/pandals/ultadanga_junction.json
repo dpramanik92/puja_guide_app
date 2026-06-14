@@ -1,0 +1,27 @@
+{
+  "id": "ultadanga_sangrami_club",
+  "name_en": "Ultadanga Sangrami Club",
+  "name_bn": "উল্টোডাঙা সংগ্রামী ক্লাব",
+  "location_en": "Ultadanga, Kolkata",
+  "location_bn": "উল্টোডাঙা, কলকাতা",
+  "address": "",
+  "coordinates": [
+    22.5958,
+    88.3928
+  ],
+  "nearest_metro": "Bidhannagar Road Railway Station",
+  "how_to_reach_en": "From Bidhannagar Road Railway Station, head towards VIP Road and follow the route to Ultadanga.",
+  "how_to_reach_bn": "বিধাননগর রোড রেলওয়ে স্টেশন থেকে ভিআইপি রোডের দিকে যান এবং উল্টোডাঙার পথে চলুন।",
+  "crowd_level": "high",
+  "best_visiting_time": "early morning 4-7 AM",
+  "specialty_en": "Theme: Beche Thakar Lorai (The Struggle to Live)",
+  "specialty_bn": "থিম: বেঁচে থাকার লড়াই",
+  "theme_2024": "",
+  "established_year": null,
+  "timings": "24 hours during puja",
+  "tags": [
+    "theme-based",
+    "cultural",
+    "popular"
+  ]
+}

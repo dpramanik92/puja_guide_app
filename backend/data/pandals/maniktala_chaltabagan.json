@@ -1,0 +1,26 @@
+{
+  "id": "maniktala_chaltabagan",
+  "name_en": "Maniktala Chaltabagan",
+  "name_bn": "মানিকতলা চালতাবাগান",
+  "location_en": "Maniktala, Kolkata",
+  "location_bn": "মানিকতলা, কলকাতা",
+  "address": "Near the intersection of Vivekananda Road and Amherst Street, Maniktala, Kolkata",
+  "coordinates": [
+    22.5867,
+    88.3639
+  ],
+  "nearest_metro": "Shobhabazar Sutanuti, Line 1",
+  "how_to_reach_en": "Take the metro to Shobhabazar Sutanuti and then a short auto or walk to the intersection of Vivekananda Road and Amherst Street.",
+  "how_to_reach_bn": "শোভাবাজার সুতানুটি মেট্রো স্টেশনে নামুন এবং তারপর ভিভেকানন্দ রোড এবং অ্যামহার্স্ট স্ট্রিটের সংযোগস্থলে একটি ছোট অটো বা হাঁটুন।",
+  "crowd_level": "high",
+  "best_visiting_time": "early morning 4-7 AM",
+  "specialty_en": "Environmentalism is a common theme.",
+  "specialty_bn": "পরিবেশবাদ একটি সাধারণ থিম।",
+  "theme_2024": "",
+  "established_year": null,
+  "timings": "24 hours during puja",
+  "tags": [
+    "environmentalism",
+    "traditional"
+  ]
+}

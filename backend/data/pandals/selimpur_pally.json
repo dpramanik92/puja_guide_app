@@ -1,0 +1,27 @@
+{
+  "id": "selimpur_pally",
+  "name_en": "Selimpur Pally",
+  "name_bn": "সেলিমপুর পল্লী",
+  "location_en": "Selimpur, Kolkata",
+  "location_bn": "সেলিমপুর, কলকাতা",
+  "address": "Selimpur Road, near Gariahat Road (South), Kolkata",
+  "coordinates": [
+    22.5125,
+    88.3654
+  ],
+  "nearest_metro": "Gariahat, Blue Line",
+  "how_to_reach_en": "A 2-minute walk from the bus stop on Gariahat Road (South).",
+  "how_to_reach_bn": "গড়িয়াহাট রোড (দক্ষিণ) বাস স্টপ থেকে ২ মিনিট হাঁটা।",
+  "crowd_level": "high",
+  "best_visiting_time": "early morning 4-7 AM",
+  "specialty_en": "Known for its vibrant themes and cultural representation.",
+  "specialty_bn": "এর উজ্জ্বল থিম এবং সাংস্কৃতিক উপস্থাপনার জন্য পরিচিত।",
+  "theme_2024": "",
+  "established_year": null,
+  "timings": "24 hours during puja days",
+  "tags": [
+    "traditional",
+    "cultural",
+    "popular"
+  ]
+}

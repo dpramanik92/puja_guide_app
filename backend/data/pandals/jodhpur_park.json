@@ -1,0 +1,27 @@
+{
+  "id": "jodhpur_park",
+  "name_en": "Jodhpur Park Durga Puja",
+  "name_bn": "যোধপুর পার্ক দুর্গা পূজা",
+  "location_en": "Jodhpur Park, Kolkata",
+  "location_bn": "যোধপুর পার্ক, কলকাতা",
+  "address": "1/D, Jodhpur Park, Kolkata, West Bengal 700068, India",
+  "coordinates": [
+    22.5039,
+    88.3655
+  ],
+  "nearest_metro": "Rabindra Sarobar, Blue Line",
+  "how_to_reach_en": "After visiting Pally Mangal Samity, walk a few lanes to reach Jodhpur Park 95 Pally.",
+  "how_to_reach_bn": "",
+  "crowd_level": "high",
+  "best_visiting_time": "early morning 4-7 AM",
+  "specialty_en": "The idol of Maa Durga is a showstopper.",
+  "specialty_bn": "মা দুর্গার মূর্তি দর্শকদের আকর্ষণ করে।",
+  "theme_2024": "",
+  "established_year": null,
+  "timings": "Open 24 hours during puja",
+  "tags": [
+    "traditional",
+    "idol",
+    "crowded"
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "appName": "Puja Guide",
+  "tabs": {
+    "home": "Home",
+    "chat": "Chat",
+    "live": "Live"
+  },
+  "home": {
+    "welcome": "Welcome to Puja Guide",
+    "subtitle": "Your Kolkata Durga Puja companion",
+    "chatButton": "Ask a Question",
+    "liveButton": "Live Updates",
+    "featuredTitle": "Top Pandals",
+    "tip": "Tip: Visit major pandals before 7 AM or after midnight to avoid crowds"
+  },
+  "chat": {
+    "title": "Puja Assistant",
+    "placeholder": "Ask about pandals, locations, routes...",
+    "send": "Send",
+    "searching_docs": "Searching pandal database...",
+    "searching_web": "Searching the web...",
+    "source_db": "From pandal database",
+    "source_web": "From web search",
+    "errorMessage": "Something went wrong. Please try again.",
+    "emptyHint": "Ask me anything about Durga Puja pandals in Kolkata!\n\nFor example:\n• Where is Kumartuli Puja?\n• How do I reach Bagbazar?\n• Which pandals have big crowds?"
+  },
+  "live": {
+    "title": "Live Updates",
+    "refreshing": "Fetching latest news...",
+    "refresh": "Refresh",
+    "noNews": "No live updates available right now.",
+    "source": "Source",
+    "loadMore": "Load More"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "retry": "Retry",
+    "share": "Share",
+    "readMore": "Read More"
+  }
+}

@@ -1,0 +1,36 @@
+# ── Secrets ───────────────────────────────────────────────────────────────────
+.env
+*.env.local
+
+# ── Python / Backend ──────────────────────────────────────────────────────────
+backend/venv/
+backend/__pycache__/
+backend/**/__pycache__/
+**/*.pyc
+**/*.pyo
+**/*.pyd
+backend/*.log
+backend/server.log
+
+# ── Node / Web ────────────────────────────────────────────────────────────────
+web/node_modules/
+web/dist/
+
+# ── Node / Mobile ─────────────────────────────────────────────────────────────
+mobile/node_modules/
+mobile/.expo/
+mobile/dist/
+
+# ── macOS ─────────────────────────────────────────────────────────────────────
+.DS_Store
+**/.DS_Store
+
+# ── Editors ───────────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ── Docker ────────────────────────────────────────────────────────────────────
+# Keep Dockerfiles tracked; ignore any local override compose files
+docker-compose.override.yml

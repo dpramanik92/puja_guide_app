@@ -1,0 +1,27 @@
+{
+  "id": "mohammad_ali_park",
+  "name_en": "Mohammad Ali Park Durga Puja Pandal",
+  "name_bn": "মোহাম্মদ আলী পার্ক দুর্গা পুজো প্যান্ডেল",
+  "location_en": "College Square, Kolkata",
+  "location_bn": "কলেজ স্কোয়ার, কলকাতা",
+  "address": "Chittaranjan Ave, Calcutta University, College Square, Kolkata",
+  "coordinates": [
+    22.5736,
+    88.3639
+  ],
+  "nearest_metro": "Central Metro Station, North-South Line",
+  "how_to_reach_en": "Located near Central Avenue, accessible via Central Metro Station.",
+  "how_to_reach_bn": "সেন্ট্রাল অ্যাভিনিউয়ের কাছে অবস্থিত, সেন্ট্রাল মেট্রো স্টেশন থেকে পৌঁছানো যায়।",
+  "crowd_level": "high",
+  "best_visiting_time": "early morning 4-7 AM",
+  "specialty_en": "The theme for 2024 is 'The White House', showcasing grandeur and creativity.",
+  "specialty_bn": "২০২৪ সালের থিম 'দ্য হোয়াইট হাউস', যা মহিমা এবং সৃজনশীলতা প্রদর্শন করে।",
+  "theme_2024": "The White House",
+  "established_year": null,
+  "timings": "24 hours during puja days",
+  "tags": [
+    "traditional",
+    "theme-based",
+    "popular"
+  ]
+}

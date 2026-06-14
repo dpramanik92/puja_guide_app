@@ -1,0 +1,27 @@
+{
+  "id": "ekdalia_evergreen",
+  "name_en": "Ekdalia Evergreen",
+  "name_bn": "একডালিয়া এভারগ্রিন",
+  "location_en": "Ekdalia, Ballygunge, Kolkata",
+  "location_bn": "একডালিয়া, বালিগঞ্জ, কলকাতা",
+  "address": "15, Ekdalia Rd, Ekdalia, Ballygunge, Kolkata, West Bengal 700019",
+  "coordinates": [
+    22.5255,
+    88.3651
+  ],
+  "nearest_metro": "Kalighat, Blue Line",
+  "how_to_reach_en": "Follow Google Maps from Reshbehari Avenue, many people head in that direction.",
+  "how_to_reach_bn": "",
+  "crowd_level": "high",
+  "best_visiting_time": "early morning 4-7 AM",
+  "specialty_en": "Renowned for its vibrant and culturally rich Durga Puja.",
+  "specialty_bn": "এর উজ্জ্বল এবং সাংস্কৃতিকভাবে সমৃদ্ধ দুর্গা পূজার জন্য বিখ্যাত।",
+  "theme_2024": "Arunachaleswarar Temple, Tamil Nadu",
+  "established_year": null,
+  "timings": "24 hours during puja",
+  "tags": [
+    "cultural",
+    "vibrant",
+    "traditional"
+  ]
+}
