@@ -135,6 +135,9 @@ export function ChatScreen({ initialQuery }: Props) {
         ) : (
           messages.map((m) => (
             <div key={m.id} className={`msg-row ${m.role}`}>
+              {m.role === "assistant" && (
+                <div className="avatar-mouse" title="Mushika — Ganesha's vahana">🐭</div>
+              )}
               <div className={`bubble ${m.role}`}>
                 {m.content}
                 {m.streaming && <span className="cursor">▌</span>}

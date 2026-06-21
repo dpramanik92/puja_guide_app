@@ -16,6 +16,11 @@ export function ChatBubble({ role, content, source, isStreaming }: Props) {
 
   return (
     <View style={[styles.row, isUser ? styles.rowUser : styles.rowAssistant]}>
+      {!isUser && (
+        <View style={styles.avatar}>
+          <Text style={styles.avatarEmoji}>🐭</Text>
+        </View>
+      )}
       <View style={[styles.bubble, isUser ? styles.bubbleUser : styles.bubbleAssistant]}>
         <Text style={[styles.text, isUser ? styles.textUser : styles.textAssistant]}>
           {content}
@@ -24,7 +29,7 @@ export function ChatBubble({ role, content, source, isStreaming }: Props) {
         {!isUser && source && !isStreaming && (
           <View style={styles.sourceChip}>
             <Text style={styles.sourceText}>
-              {source === "database" ? t("chat.source_db") : t("chat.source_web")}
+              {source === "database" ? t("chat.source_db") : source === "maps" ? t("chat.source_maps") : t("chat.source_web")}
             </Text>
           </View>
         )}
@@ -41,11 +46,25 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     marginVertical: 4,
     paddingHorizontal: 12,
+    alignItems: "flex-end",
   },
   rowUser: { justifyContent: "flex-end" },
   rowAssistant: { justifyContent: "flex-start" },
+  avatar: {
+    width: 32,
+    height: 32,
+    borderRadius: 16,
+    backgroundColor: "#FFF3E0",
+    borderWidth: 1,
+    borderColor: "#E8DDD0",
+    alignItems: "center",
+    justifyContent: "center",
+    marginRight: 6,
+    marginBottom: 2,
+  },
+  avatarEmoji: { fontSize: 18, lineHeight: 22 },
   bubble: {
-    maxWidth: "82%",
+    maxWidth: "78%",
     borderRadius: 16,
     paddingHorizontal: 14,
     paddingVertical: 10,
