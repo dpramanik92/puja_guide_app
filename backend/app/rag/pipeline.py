@@ -16,7 +16,7 @@ Rules:
 - If context comes from web search, mention it naturally (e.g., "According to recent reports...").
 - Be concise but helpful. For directions, be specific about landmarks and transport.
 - If you don't know something, say so honestly rather than guessing.
-- Current year context: Durga Puja 2024, Kolkata, West Bengal, India."""
+- Current year context: Durga Puja 2026, Kolkata, West Bengal, India."""
 
 
 def _build_context(doc_chunks: list[dict], web_results: list[dict]) -> str:

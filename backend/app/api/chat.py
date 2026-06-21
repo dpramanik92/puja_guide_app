@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
-from app.rag.pipeline import run_pipeline
+from app.rag.agent_pipeline import run_agent_pipeline
 
 router = APIRouter()
 
@@ -21,7 +21,7 @@ async def chat(request: ChatRequest):
     history = [{"role": m.role, "content": m.content} for m in request.history]
 
     return StreamingResponse(
-        run_pipeline(request.message, history),
+        run_agent_pipeline(request.message, history),
         media_type="text/event-stream",
         headers={
             "Cache-Control": "no-cache",

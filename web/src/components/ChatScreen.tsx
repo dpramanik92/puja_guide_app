@@ -1,12 +1,14 @@
 import { useState, useRef, useEffect, useCallback, KeyboardEvent } from "react";
 import { useTranslation } from "react-i18next";
 import { streamChat, type ChatMessage, type ChatSource } from "../services/api";
+import { MapView, type MapData } from "./MapView";
 
 interface Message {
   id: string;
   role: "user" | "assistant";
   content: string;
   source?: ChatSource;
+  mapData?: MapData;
   streaming?: boolean;
 }
 
@@ -61,7 +63,13 @@ export function ChatScreen({ initialQuery }: Props) {
       try {
         for await (const event of streamChat(trimmed, history)) {
           if (event.type === "source") {
-            setStatusText(event.source === "web" ? t("chat.searching_web") : t("chat.searching_docs"));
+            const statusKey =
+              event.source === "web"
+                ? "chat.searching_web"
+                : event.source === "maps"
+                ? "chat.searching_maps"
+                : "chat.searching_docs";
+            setStatusText(t(statusKey));
             setMessages((prev) =>
               prev.map((m) => (m.id === asstId ? { ...m, source: event.source } : m))
             );
@@ -71,6 +79,10 @@ export function ChatScreen({ initialQuery }: Props) {
               prev.map((m) =>
                 m.id === asstId ? { ...m, content: m.content + event.token } : m
               )
+            );
+          } else if (event.type === "mapData") {
+            setMessages((prev) =>
+              prev.map((m) => (m.id === asstId ? { ...m, mapData: event.mapData } : m))
             );
           } else if (event.type === "done") {
             setMessages((prev) =>
@@ -106,6 +118,12 @@ export function ChatScreen({ initialQuery }: Props) {
     el.style.height = Math.min(el.scrollHeight, 100) + "px";
   };
 
+  const sourceLabel = (source: ChatSource) => {
+    if (source === "web") return t("chat.source_web");
+    if (source === "maps") return t("chat.source_maps");
+    return t("chat.source_db");
+  };
+
   return (
     <div className="chat-wrap screen">
       <div className="chat-messages">
@@ -122,10 +140,11 @@ export function ChatScreen({ initialQuery }: Props) {
                 {m.streaming && <span className="cursor">▌</span>}
                 {m.role === "assistant" && m.source && !m.streaming && (
                   <div>
-                    <span className="source-chip">
-                      {m.source === "database" ? t("chat.source_db") : t("chat.source_web")}
-                    </span>
+                    <span className="source-chip">{sourceLabel(m.source)}</span>
                   </div>
+                )}
+                {m.mapData && !m.streaming && (
+                  <MapView mapData={m.mapData} />
                 )}
               </div>
             </div>

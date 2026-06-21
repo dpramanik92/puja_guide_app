@@ -8,19 +8,60 @@ import {
   View,
   ActivityIndicator,
 } from "react-native";
+import MapView, { Marker, Polyline, PROVIDER_DEFAULT } from "react-native-maps";
 import { useTranslation } from "react-i18next";
 import { useLocalSearchParams } from "expo-router";
 import { ChatBubble } from "../../src/components/ChatBubble";
 import { MessageInput } from "../../src/components/MessageInput";
-import { streamChat, type ChatMessage, type ChatSource } from "../../src/services/api";
+import { streamChat, type ChatMessage, type ChatSource, type MapData } from "../../src/services/api";
 
 interface Message extends ChatMessage {
   id: string;
   source?: ChatSource;
+  mapData?: MapData;
   isStreaming?: boolean;
 }
 
 const PUJA_RED = "#B22222";
+
+const MARKER_COLORS: Record<string, string> = {
+  pandal: "#B22222",
+  place: "#2563EB",
+  origin: "#16A34A",
+  destination: "#9333EA",
+};
+
+function PandaMap({ mapData }: { mapData: MapData }) {
+  return (
+    <MapView
+      provider={PROVIDER_DEFAULT}
+      style={styles.map}
+      initialRegion={{
+        latitude: mapData.center.lat,
+        longitude: mapData.center.lng,
+        latitudeDelta: 0.04,
+        longitudeDelta: 0.04,
+      }}
+    >
+      {mapData.markers.map((m, i) => (
+        <Marker
+          key={i}
+          coordinate={{ latitude: m.lat, longitude: m.lng }}
+          title={m.name}
+          pinColor={MARKER_COLORS[m.type] ?? PUJA_RED}
+        />
+      ))}
+      {mapData.polylines.map((p, i) => (
+        <Polyline
+          key={i}
+          coordinates={p.coords.map(([lat, lng]) => ({ latitude: lat, longitude: lng }))}
+          strokeColor={p.color}
+          strokeWidth={4}
+        />
+      ))}
+    </MapView>
+  );
+}
 
 export default function ChatScreen() {
   const { t } = useTranslation();
@@ -34,6 +75,12 @@ export default function ChatScreen() {
 
   const scrollToBottom = () => {
     setTimeout(() => listRef.current?.scrollToEnd({ animated: true }), 100);
+  };
+
+  const sourceStatusKey = (source: ChatSource) => {
+    if (source === "web") return "chat.searching_web";
+    if (source === "maps") return "chat.searching_maps";
+    return "chat.searching_docs";
   };
 
   const handleSend = useCallback(
@@ -65,9 +112,7 @@ export default function ChatScreen() {
 
       closeStreamRef.current = streamChat(text, history, {
         onSource: (source) => {
-          setStatusText(
-            source === "web" ? t("chat.searching_web") : t("chat.searching_docs")
-          );
+          setStatusText(t(sourceStatusKey(source)));
           setMessages((prev) =>
             prev.map((m) => (m.id === assistantMsgId ? { ...m, source } : m))
           );
@@ -82,6 +127,11 @@ export default function ChatScreen() {
             )
           );
           scrollToBottom();
+        },
+        onMapData: (mapData) => {
+          setMessages((prev) =>
+            prev.map((m) => (m.id === assistantMsgId ? { ...m, mapData } : m))
+          );
         },
         onDone: () => {
           setMessages((prev) =>
@@ -109,7 +159,6 @@ export default function ChatScreen() {
   );
 
   // Fire auto-query when navigating from home with a pandal query param.
-  // Uses a ref to avoid double-firing if the tab was already mounted.
   useEffect(() => {
     const q = params.query;
     if (q && q !== lastFiredQueryRef.current) {
@@ -135,12 +184,19 @@ export default function ChatScreen() {
           data={messages}
           keyExtractor={(m) => m.id}
           renderItem={({ item }) => (
-            <ChatBubble
-              role={item.role}
-              content={item.content}
-              source={item.source}
-              isStreaming={item.isStreaming}
-            />
+            <View>
+              <ChatBubble
+                role={item.role}
+                content={item.content}
+                source={item.source}
+                isStreaming={item.isStreaming}
+              />
+              {item.mapData && !item.isStreaming && (
+                <View style={styles.mapContainer}>
+                  <PandaMap mapData={item.mapData} />
+                </View>
+              )}
+            </View>
           )}
           contentContainerStyle={styles.list}
           onLayout={scrollToBottom}
@@ -185,4 +241,11 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   statusText: { fontSize: 13, color: "#8B4513", fontStyle: "italic" },
+  mapContainer: {
+    marginHorizontal: 12,
+    marginBottom: 8,
+    borderRadius: 12,
+    overflow: "hidden",
+  },
+  map: { height: 220, width: "100%" },
 });

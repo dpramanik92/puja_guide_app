@@ -1,3 +1,5 @@
+import type { MapData } from "../components/MapView";
+
 const BASE_URL = "/api";
 
 export interface ChatMessage {
@@ -13,17 +15,18 @@ export interface LiveCard {
   source: string;
 }
 
-export type ChatSource = "database" | "web";
+export type ChatSource = "database" | "web" | "maps";
 
-export interface StreamEvent {
-  type: "source";
-  source: ChatSource;
-}
+export type StreamEvent =
+  | { type: "source"; source: ChatSource }
+  | { type: "token"; token: string }
+  | { type: "mapData"; mapData: MapData }
+  | { type: "done" };
 
 export async function* streamChat(
   message: string,
   history: ChatMessage[]
-): AsyncGenerator<{ type: "source"; source: ChatSource } | { type: "token"; token: string } | { type: "done" }> {
+): AsyncGenerator<StreamEvent> {
   const response = await fetch(`${BASE_URL}/chat`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -56,6 +59,12 @@ export async function* streamChat(
 
       if (data.startsWith("__SOURCE__")) {
         yield { type: "source", source: data.replace("__SOURCE__", "") as ChatSource };
+      } else if (data.startsWith("__MAP_DATA__")) {
+        try {
+          yield { type: "mapData", mapData: JSON.parse(data.slice(12)) as MapData };
+        } catch {
+          // ignore malformed map data
+        }
       } else {
         try {
           yield { type: "token", token: JSON.parse(data) };

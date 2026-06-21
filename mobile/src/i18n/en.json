@@ -21,6 +21,8 @@
     "searching_web": "Searching the web...",
     "source_db": "From pandal database",
     "source_web": "From web search",
+    "source_maps": "From Google Maps",
+    "searching_maps": "Searching Google Maps...",
     "errorMessage": "Something went wrong. Please try again.",
     "emptyHint": "Ask me anything about Durga Puja pandals in Kolkata!\n\nFor example:\n• Where is Kumartuli Puja?\n• How do I reach Bagbazar?\n• Which pandals have big crowds?"
   },
