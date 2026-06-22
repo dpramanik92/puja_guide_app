@@ -8,10 +8,18 @@
   "home": {
     "welcome": "Welcome to Puja Guide",
     "subtitle": "Your Kolkata Durga Puja companion",
-    "chatButton": "Ask a Question",
-    "liveButton": "Live Updates",
     "featuredTitle": "Top Pandals",
-    "tip": "Tip: Visit major pandals before 7 AM or after midnight to avoid crowds"
+    "tip": "Tip: Visit major pandals before 7 AM or after midnight to avoid crowds",
+    "action_plan": "Plan Pandal Hopping",
+    "action_plan_desc": "Create an optimized route",
+    "action_directions": "Get Directions",
+    "action_directions_desc": "From your location to a pandal",
+    "action_nearby": "Search Nearby",
+    "action_nearby_desc": "Find pandals close to you",
+    "action_about": "Tell Me About",
+    "action_about_desc": "History, theme & specialty",
+    "action_food": "Nearby Restaurants & Cafes",
+    "action_food_desc": "Find food & drinks near a pandal"
   },
   "chat": {
     "title": "Puja Assistant",

@@ -42,9 +42,57 @@ function pandalQuery(p: typeof FEATURED_PANDALS[0], lang: "en" | "bn"): string {
   return `Tell me about ${p.name_en}: its history, unique theme or idol, best visiting time, expected crowd level, and step-by-step directions to reach it from different parts of Kolkata.`;
 }
 
+const QUICK_ACTIONS = [
+  {
+    id: "plan",
+    icon: "🗺️",
+    labelKey: "home.action_plan",
+    descKey: "home.action_plan_desc",
+    queryEn: "Help me plan a pandal hopping itinerary for Durga Puja 2026 in Kolkata. Suggest the best pandals to visit and create an optimized route.",
+    queryBn: "কলকাতার দুর্গাপূজা ২০২৬-এর জন্য পণ্ডাল হপিং পরিকল্পনা করতে সাহায্য করুন। সেরা পণ্ডালগুলি পরামর্শ দিন এবং একটি সুবিধাজনক রুট তৈরি করুন।",
+  },
+  {
+    id: "directions",
+    icon: "🧭",
+    labelKey: "home.action_directions",
+    descKey: "home.action_directions_desc",
+    queryEn: "I want to visit a Durga Puja pandal. Can you help me get directions? Please ask me where I am starting from and which pandal I want to reach.",
+    queryBn: "আমি একটি দুর্গাপূজার পণ্ডালে যেতে চাই। আমাকে দিকনির্দেশনা পেতে সাহায্য করুন। আমি কোথা থেকে যাচ্ছি এবং কোন পণ্ডালে যেতে চাই তা জিজ্ঞেস করুন।",
+  },
+  {
+    id: "nearby",
+    icon: "📍",
+    labelKey: "home.action_nearby",
+    descKey: "home.action_nearby_desc",
+    queryEn: "I want to find Durga Puja pandals near me. Please ask me for my current location and show me what's nearby.",
+    queryBn: "আমার কাছের দুর্গাপূজার পণ্ডালগুলি খুঁজতে চাই। আমার অবস্থান জিজ্ঞেস করুন এবং কাছের পণ্ডালগুলি দেখান।",
+  },
+  {
+    id: "about",
+    icon: "ℹ️",
+    labelKey: "home.action_about",
+    descKey: "home.action_about_desc",
+    queryEn: "Tell me about the top famous Durga Puja pandals in Kolkata — their history, unique themes, and what makes each one special.",
+    queryBn: "কলকাতার বিখ্যাত দুর্গাপূজার পণ্ডালগুলি সম্পর্কে বলুন — তাদের ইতিহাস, অনন্য থিম এবং প্রতিটির বিশেষত্ব কী।",
+  },
+  {
+    id: "food",
+    icon: "🍽️",
+    labelKey: "home.action_food",
+    descKey: "home.action_food_desc",
+    queryEn: "I want to find restaurants and cafes near a Durga Puja pandal. Please ask me which pandal or area I'm near, then show me good food options nearby.",
+    queryBn: "আমি একটি দুর্গাপূজার পণ্ডালের কাছে রেস্তোরাঁ ও ক্যাফে খুঁজতে চাই। আমি কোন পণ্ডাল বা এলাকার কাছে আছি তা জিজ্ঞেস করুন, তারপর কাছের ভালো খাবারের জায়গা দেখান।",
+  },
+];
+
 export default function HomeScreen() {
   const { t, i18n } = useTranslation();
   const lang = i18n.language as "en" | "bn";
+
+  const fireAction = (queryEn: string, queryBn: string) => {
+    const query = lang === "bn" ? queryBn : queryEn;
+    router.push({ pathname: "/(tabs)/chat", params: { query } });
+  };
 
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.content}>
@@ -55,21 +103,21 @@ export default function HomeScreen() {
         <Text style={styles.heroSubtitle}>{t("home.subtitle")}</Text>
       </View>
 
-      <View style={styles.buttonRow}>
-        <TouchableOpacity
-          style={[styles.ctaButton, styles.chatButton]}
-          onPress={() => router.push("/(tabs)/chat")}
-        >
-          <Text style={styles.ctaIcon}>💬</Text>
-          <Text style={styles.ctaText}>{t("home.chatButton")}</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={[styles.ctaButton, styles.liveButton]}
-          onPress={() => router.push("/(tabs)/live")}
-        >
-          <Text style={styles.ctaIcon}>📡</Text>
-          <Text style={styles.ctaText}>{t("home.liveButton")}</Text>
-        </TouchableOpacity>
+      <View style={styles.actionsGrid}>
+        {QUICK_ACTIONS.map((a) => (
+          <TouchableOpacity
+            key={a.id}
+            style={[styles.actionCard, a.id === "food" && styles.actionCardWide]}
+            onPress={() => fireAction(a.queryEn, a.queryBn)}
+            activeOpacity={0.75}
+          >
+            <Text style={styles.actionIcon}>{a.icon}</Text>
+            <View style={a.id === "food" ? { flex: 1 } : undefined}>
+              <Text style={styles.actionLabel}>{t(a.labelKey)}</Text>
+              <Text style={styles.actionDesc}>{t(a.descKey)}</Text>
+            </View>
+          </TouchableOpacity>
+        ))}
       </View>
 
       <View style={styles.tipBox}>
@@ -124,27 +172,44 @@ const styles = StyleSheet.create({
     color: "#FFD0D0",
     fontFamily: "HindSiliguri-Regular",
   },
-  buttonRow: {
+  actionsGrid: {
     flexDirection: "row",
-    paddingHorizontal: 16,
+    flexWrap: "wrap",
+    paddingHorizontal: 12,
     marginTop: -16,
-    gap: 12,
+    gap: 10,
   },
-  ctaButton: {
-    flex: 1,
-    borderRadius: 12,
-    paddingVertical: 16,
-    alignItems: "center",
+  actionCard: {
+    width: "47%",
+    backgroundColor: "#FFFFFF",
+    borderRadius: 14,
+    padding: 16,
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.12,
+    shadowOpacity: 0.1,
     shadowRadius: 6,
-    elevation: 4,
+    elevation: 3,
   },
-  chatButton: { backgroundColor: "#FFFFFF" },
-  liveButton: { backgroundColor: PUJA_GOLD },
-  ctaIcon: { fontSize: 24, marginBottom: 4 },
-  ctaText: { fontSize: 14, fontWeight: "700", color: "#2C1810" },
+  actionCardWide: {
+    width: "100%",
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 14,
+  },
+  actionIcon: { fontSize: 26, marginBottom: 6 },
+  actionLabel: {
+    fontSize: 14,
+    fontWeight: "700",
+    color: "#2C1810",
+    fontFamily: "HindSiliguri-Bold",
+    marginBottom: 3,
+  },
+  actionDesc: {
+    fontSize: 12,
+    color: "#9E8E7E",
+    fontFamily: "HindSiliguri-Regular",
+    lineHeight: 17,
+  },
   tipBox: {
     backgroundColor: "#FFF3CD",
     marginHorizontal: 16,
