@@ -5,12 +5,14 @@ import {
   Platform,
   StyleSheet,
   Text,
+  TouchableOpacity,
   View,
   ActivityIndicator,
 } from "react-native";
 import MapView, { Marker, Polyline, PROVIDER_DEFAULT } from "react-native-maps";
 import { useTranslation } from "react-i18next";
-import { useLocalSearchParams } from "expo-router";
+import { useLocalSearchParams, useNavigation } from "expo-router";
+import { useLanguage } from "../../src/hooks/useLanguage";
 import { ChatBubble } from "../../src/components/ChatBubble";
 import { MessageInput } from "../../src/components/MessageInput";
 import { streamChat, type ChatMessage, type ChatSource, type MapData } from "../../src/services/api";
@@ -65,6 +67,8 @@ function PandaMap({ mapData }: { mapData: MapData }) {
 
 export default function ChatScreen() {
   const { t } = useTranslation();
+  const navigation = useNavigation();
+  const { currentLang, toggleLanguage } = useLanguage();
   const params = useLocalSearchParams<{ query?: string }>();
   const [messages, setMessages] = useState<Message[]>([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -72,6 +76,30 @@ export default function ChatScreen() {
   const listRef = useRef<FlatList>(null);
   const closeStreamRef = useRef<(() => void) | null>(null);
   const lastFiredQueryRef = useRef<string | null>(null);
+
+  const resetChat = useCallback(() => {
+    closeStreamRef.current?.();
+    closeStreamRef.current = null;
+    setMessages([]);
+    setIsLoading(false);
+    setStatusText("");
+    lastFiredQueryRef.current = null;
+  }, []);
+
+  useEffect(() => {
+    navigation.setOptions({
+      headerRight: () => (
+        <View style={{ flexDirection: "row", alignItems: "center", gap: 8, marginRight: 14 }}>
+          <TouchableOpacity onPress={resetChat} style={styles.newChatBtn}>
+            <Text style={styles.newChatText}>✏️ {t("chat.newChat")}</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={toggleLanguage} style={styles.langBtn}>
+            <Text style={styles.langText}>{currentLang === "en" ? "বাংলা" : "EN"}</Text>
+          </TouchableOpacity>
+        </View>
+      ),
+    });
+  }, [navigation, resetChat, toggleLanguage, currentLang, t]);
 
   const scrollToBottom = () => {
     setTimeout(() => listRef.current?.scrollToEnd({ animated: true }), 100);
@@ -248,4 +276,20 @@ const styles = StyleSheet.create({
     overflow: "hidden",
   },
   map: { height: 220, width: "100%" },
+  newChatBtn: {
+    backgroundColor: "rgba(255,255,255,0.2)",
+    borderWidth: 1,
+    borderColor: "rgba(255,255,255,0.5)",
+    borderRadius: 12,
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+  },
+  newChatText: { color: "#FFFFFF", fontSize: 13, fontWeight: "600" },
+  langBtn: {
+    backgroundColor: "#DAA520",
+    borderRadius: 12,
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+  },
+  langText: { color: "#2C1810", fontWeight: "700", fontSize: 13, fontFamily: "HindSiliguri-Bold" },
 });

@@ -26,6 +26,8 @@ html, body, #root {
 .header svg { overflow: visible; }
 .header h1 { font-size: 18px; font-weight: 700; }
 .lang-btn { background: var(--puja-gold); color: var(--puja-brown); border: none; border-radius: 14px; padding: 5px 12px; font-family: var(--font); font-size: 13px; font-weight: 700; cursor: pointer; }
+.new-chat-btn { background: rgba(255,255,255,0.2); color: #fff; border: 1px solid rgba(255,255,255,0.5); border-radius: 14px; padding: 5px 12px; font-family: var(--font); font-size: 13px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+.new-chat-btn:hover { background: rgba(255,255,255,0.3); }
 
 /* Tabs */
 .tabs { display: flex; background: #fff; border-top: 1px solid var(--puja-border); flex-shrink: 0; order: 99; }

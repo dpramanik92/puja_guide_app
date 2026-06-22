@@ -59,12 +59,7 @@ export default function TabLayout() {
       />
       <Tabs.Screen
         name="live"
-        options={{
-          title: t("tabs.live"),
-          tabBarLabel: t("tabs.live"),
-          tabBarIcon: ({ color }) => <Text style={{ color, fontSize: 20 }}>📡</Text>,
-          headerTitle: t("live.title"),
-        }}
+        options={{ href: null }}
       />
     </Tabs>
   );
