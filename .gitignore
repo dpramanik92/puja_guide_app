@@ -34,3 +34,6 @@ mobile/dist/
 # ── Docker ────────────────────────────────────────────────────────────────────
 # Keep Dockerfiles tracked; ignore any local override compose files
 docker-compose.override.yml
+
+# ── Docs / Plans ──────────────────────────────────────────────────────────────
+integrate_test.md
